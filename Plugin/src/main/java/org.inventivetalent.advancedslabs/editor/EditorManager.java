@@ -163,16 +163,21 @@ public class EditorManager {
 			}
 		}
 		if (glowColor != null) {
-			GlowAPI.setGlowing(slab.getShulker(), glowColor, receiver);
+			//System.out.println("glowing");
+			slab.getShulker().setGlowing(true);
+			//GlowAPI.setGlowing(slab.getShulker(), glowColor, receiver);
 		} else {
-			GlowAPI.setGlowing(slab.getShulker(), true, receiver);
+			//System.out.println("glowing2");
+			slab.getShulker().setGlowing(true);
+			//GlowAPI.setGlowing(slab.getShulker(), GlowAPI.Color.RED, receiver);
 		}
 	}
 
 	public void removeEditor(UUID uuid) {
 		BlockEditor editor = editorMap.remove(uuid);
 		if (editor != null) {
-			GlowAPI.setGlowing(editor.slab.getShulker(), false, editor.getPlayer());
+			editor.slab.getShulker().setGlowing(false);
+			//GlowAPI.setGlowing(editor.slab.getShulker(), false, editor.getPlayer());
 		}
 	}
 

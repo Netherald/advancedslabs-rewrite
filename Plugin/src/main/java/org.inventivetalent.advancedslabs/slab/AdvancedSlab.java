@@ -6,10 +6,12 @@ package org.inventivetalent.advancedslabs.slab;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
+import net.minecraft.world.entity.decoration.EntityArmorStand;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.data.BlockData;
+import org.bukkit.craftbukkit.v1_17_R1.entity.CraftArmorStand;
 import org.bukkit.entity.*;
 import org.bukkit.material.MaterialData;
 import org.bukkit.potion.PotionEffect;
@@ -71,18 +73,24 @@ public class AdvancedSlab implements IPathPassenger, IAdvancedSlab {
 		this.armorStand.setCustomName("advancedslab");
 		this.armorStand.setCustomNameVisible(false);
 		this.armorStand.setMarker(true);
-		EntityHelper.setInvulnerable(getArmorStand());
+		//EntityHelper.setInvulnerable(getArmorStand());
 
 		this.shulker.setCustomName("advancedslab");
 		this.shulker.setCustomNameVisible(false);
 		this.shulker.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 0, false, false));
 		this.shulker.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, Integer.MAX_VALUE, 120, false, false));// Just a little backup in case the invulnerability fails again...
+		this.shulker.setAI(false);
+		this.shulker.setSilent(true);
+		this.shulker.setInvulnerable(true);
+		this.armorStand.addPassenger(this.shulker);
+		/*
 		EntityHelper.setNoAI(getShulker());
 		EntityHelper.clearEntityGoals(getShulker());
 		EntityHelper.makeSilent(getShulker());
 		EntityHelper.setInvulnerable(getShulker());
 
 		EntityHelper.addPassenger(getArmorStand(), getShulker());
+		 */
 	}
 
 	public AdvancedSlab(JsonObject jsonObject) {
@@ -262,7 +270,14 @@ public class AdvancedSlab implements IPathPassenger, IAdvancedSlab {
 
 		this.location = location;
 
-		if (getArmorStand() != null) { EntityHelper.setPosition(getArmorStand(), location.getX(), location.getY(), location.getZ()); }
+		if (getArmorStand() != null) {
+			//EntityHelper.setPosition(getArmorStand(), location.getX(), location.getY(), location.getZ());
+			((CraftArmorStand) this.armorStand).getHandle().a(location.getX(), location.getY(), location.getZ());
+			//this.armorStand.teleport(location);
+			//this.shulker.teleport(location);
+			//this.armorStand.setVelocity(this.armorStand.getLocation().toVector().subtract(location.toVector()));
+			//this.shulker.setVelocity(this.armorStand.getLocation().toVector().subtract(location.toVector()));
+		}
 
 		//		reStackEntities();
 	}
