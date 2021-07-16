@@ -11,10 +11,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
-import org.inventivetalent.advancedslabs.api.path.IMovementController;
-import org.inventivetalent.advancedslabs.api.path.IPathPoint;
-import org.inventivetalent.advancedslabs.api.path.ISlabPath;
-import org.inventivetalent.advancedslabs.api.path.PathType;
+import org.inventivetalent.advancedslabs.api.path.*;
 import org.inventivetalent.advancedslabs.movement.MovementControllerAbstract;
 
 import java.util.ArrayList;
@@ -123,7 +120,6 @@ public class SlabPath implements ISlabPath {
 		return null;
 	}
 
-	@Override
 	public PathType getType() {
 		return type;
 	}

@@ -30,8 +30,6 @@ public interface ISlabPath {
 
 	IPathPoint getEnd();
 
-	PathType getType();
-
 	double getSpeed();
 
 	void setSpeed(double speed);

@@ -1,6 +1,7 @@
 plugins {
     java
     id("io.freefair.lombok") version "6.0.0-m2"
+    id("com.github.johnrengelman.shadow") version "7.0.0"
 }
 
 group = "org.example"
@@ -40,6 +41,7 @@ tasks.getByName<Test>("test") {
     useJUnitPlatform()
 }
 
+/*
 val shade = configurations.create("shade")
 shade.extendsFrom(configurations.implementation.get())
 
@@ -65,6 +67,16 @@ tasks {
     }
 
     jar {
-        from (shade.map { if (it.isDirectory) it else zipTree(it) })
+        from (shade.map {
+            logger.debug("[${it.name}] Starting jar")
+            if (it.isDirectory) {
+                logger.debug("[${it.name}] Starting normal jar")
+                it
+            } else {
+                logger.debug("[${it.name}] Starting ziptree")
+                zipTree(it)
+            }
+        })
     }
 }
+ */

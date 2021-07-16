@@ -1,6 +1,6 @@
 name: AdvancedSlabs
 main: org.inventivetalent.advancedslabs.AdvancedSlabs
-authors: [inventivetalent, netherald]
+authors: [InventiveTalent, Netherald]
 version: ${project.version}
 api-version: 1.17
 

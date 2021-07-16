@@ -149,7 +149,7 @@ public class AdvancedSlabs extends JavaPlugin implements Listener {
 		Bukkit.getPluginManager().registerEvents(new ItemListener(this), this);
 
 		CommandHandler commandHandler = new CommandHandler(this);
-		PluginCommand command = getCommand("org/inventivetalent/advancedslabs");
+		PluginCommand command = getCommand("advancedslabs");
 		command.setExecutor(commandHandler);
 		command.setTabCompleter(commandHandler);
 
