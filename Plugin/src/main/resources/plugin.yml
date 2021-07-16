@@ -1,0 +1,11 @@
+name: AdvancedSlabs
+main: org.inventivetalent.advancedslabs.AdvancedSlabs
+authors: [inventivetalent, netherald]
+version: ${project.version}
+api-version: 1.17
+
+softdepend: [PacketListenerApi, MenuBuilder, ItemBuilder, RecipeBuilder, MessageBuilder, GlowAPI, ReflectionHelper, APIManager]
+
+commands:
+  advancedslabs:
+    aliases: [as, aslab]

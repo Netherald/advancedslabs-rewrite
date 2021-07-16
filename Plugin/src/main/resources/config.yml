@@ -1,0 +1,103 @@
+# Amount of slab-items returned when converting a normal block
+slabRatio: 1
+
+# Enable owners of slabs (only owners or players with permission "advancedslabs.editall" can edit the slab)
+slabOwners: true
+
+# Make sure the slab is solid by placing barriers and flower pots inside it (prevents players from being kicked for flying)
+# Alternatively you can enable "allow-flight" in server.properties
+ensureSolid: false
+
+items:
+  editor:
+    wand:
+      type: "STICK"
+      meta:
+        display: "&bEditor Wand"
+        lore:
+          - "&8Right-Click &7to edit!"
+          - "&8Shift right-click &7to remove"
+          - "&8Left-Click &7to stop editing"
+  movement:
+    path:
+      wand:
+        type: "LEASH"
+        meta:
+          display: "&6Path Wand"
+          lore:
+            - "&8Right-Click &7to edit a path"
+            - "&8Shift right-click &7to add block point"
+            - "&8Shift left-click &7to remove block point"
+            - " "
+            - "&8Shift left-click &7in air to reset"
+            - " "
+            - "&8Right-click slab &7to bind"
+            - "&8Left-click slab &7to unbind"
+recipes:
+  editor:
+    wand:
+      shape:
+        - "rdr"
+        - "rsr"
+        - " s "
+      ingredients:
+        d:
+          type: "DIAMOND"
+        r:
+          type: "REDSTONE"
+        s:
+          type: "STICK"
+  movement:
+    path:
+      wand:
+        shape:
+          - "rdr"
+          - "dld"
+          - "rdr"
+        ingredients:
+          r:
+            type: "REDSTONE"
+          d:
+            type: "DIAMOND"
+          l:
+            type: "LEASH"
+messages:
+  editor:
+    editing: "&aYou are now editing this block."
+    finished: "&aYou are no longer editing."
+    scrollSteps: "&eSteps: &7%s"
+    locationInfo: "&ex: &7%s&e, y: &7%s&e, Z: &7%s"
+    error:
+      noPermission: "&cYou cannot edit this block."
+    path:
+      reset: "&aYou are no longer editing a path"
+      start: "&aYou started a new path"
+      edit: "&aYou are now editing this path"
+      empty: "&aThis path is now empty and will be deleted if it stays empty."
+      bound: "&aPath bound to slab"
+      unbound: "&aPath unbound from slab"
+      point:
+        added: "&aPoint added"
+        removed: "§cPoint removed"
+      type:
+        format: "&6%s &8- &7%s"
+        circular:
+          switch:
+            description: "Go directly to the start when at the end. Repeat while power is supplied"
+        reverse:
+          switch:
+            description: "Move the path in reversed order when at the end. Repeat while power is supplied"
+          toggle:
+            description: "Move to the end when toggled by power. Move back to the start when toggled again"
+      speed:
+        format: "&aPath speed: &7%s (blocks per tick)"
+      error:
+        notEditing: "&cYou are not editing a path"
+        notFound: "&cCould not find a path"
+  error:
+    invalidMaterial: "&cInvalid Material: %s"
+    notOnline: "&cPlayer %s is not online"
+  highlight: "&aHighlighted nearby slabs"
+  respawn: "&aRespawned nearby slab entities"
+  # Prefix for block items (e.g. &bAdvancedSlab: &eSTONE)
+  blockPrefix: "&bAdvancedSlab: &e"
